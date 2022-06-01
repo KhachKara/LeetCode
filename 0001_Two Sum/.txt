@@ -1,0 +1,2 @@
+https://leetcode.com/problems/two-sum/
+https://www.geeksforgeeks.org/how-to-find-index-of-a-given-element-in-a-vector-in-cpp/
