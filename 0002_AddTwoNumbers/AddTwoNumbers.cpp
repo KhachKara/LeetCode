@@ -56,7 +56,7 @@ vector<int> operator + (ListNode l1, ListNode l2){
 		counter = l2.sise();
 	}
 	for(int i = 0; i < counter; ++i){
-		v.push_back(l1[i] + l2[i]);
+		v.push_back(l1[i].val + l2[i].val);
 	}
 	return v;
 }
@@ -68,8 +68,8 @@ int main() {
 	l1 = [2,4,3]; 
 	l2 = [5,6,4];	
 	
-	int res = l1 + l2;
-	
+	res = l1 + l2;
+		
 	cout << res << '\n';
 	
 	system("pause>null");
