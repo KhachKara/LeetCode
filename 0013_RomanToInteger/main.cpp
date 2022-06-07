@@ -48,15 +48,49 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999]
 
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 class Solution {
 public:
     int romanToInt(string s) {
-        if(s == 'I') {
-            cout << "hi" << '\n';
-        }
+        stringstream ss;
+        ss << s;
+        int num = 0;
+        int res = 0;
+        while (ss) {
 
+        }
+        if (s == "I") {
+            num = 1;
+        } else if (s == "II"){
+            num = 2;
+        } else if (s == "III"){
+            num = 3;
+        } else if (s == "IV"){
+            num = 4;
+        } else if (s == "V"){
+            num = 5;
+        } else if (s == "VI"){
+            num = 6;
+        } else if (s == "VII"){
+            num = 7;
+        } else if (s == "VIII"){
+            num = 8;
+        } else if (s == "IX"){
+            num = 9;
+        } else if (s == "X"){
+            num = 10;
+        } else if (s == "L"){
+            num = 50;
+        } else if (s == "C"){
+            num = 100;
+        } else if (s == "D"){
+            num = 500;
+        } else if (s == "M"){
+            num = 1000;
+        }
+        return num;
     }
 };
 
