@@ -38,10 +38,9 @@ class Solution {
 		void isPalindrome(const int& x) {
 			string intString;
 			intString = to_string(x);
-			string::iterator itB = intString.begin(); 
+			string::iterator itB = intString.begin();
 			string::iterator itE = intString.end();
-			
-			cout << itB << " " << itE << '\n';
+			cout << itB << '\n';
 		}
 };
 
@@ -49,6 +48,7 @@ int main() {
 	Solution sl;
 	int x;
 	cin >> x;
-	cout << sl.isPalindrome(x) << '\n';
+	sl.isPalindrome(x);
+	cout << '\n';
 	return 0;
 }
