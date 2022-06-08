@@ -49,34 +49,29 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999]
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
 
 class Solution {
-public:
-    vector<pair<string, int>> combinations = {{"I", 1}, {"II", 2}, {"III", 3}, {"IV", 4}, {"V", 5},
-                                                     {"VI", 6}, {"VII", 7}, {"VIII", 8}, {"IX", 9}, {"X", 10},
-                                                     {"L", 50}, {"D", 100}, {"M", 1000}};
+	public:
 
-//    vector<pair<int, string>> combinations = {{1, "I"}, {2, "II"}, {3, "III"}, {4, "IV"}, {5, "V"},
-//                                              {6, "VI"}, {7, "VII"}, {8, "VIII"}, {9, "IX"}, {10, "X"},
-//                                              {50, "L"}, {100, "D"}, {1000, "M"}};
-    int romanToInt(string s) {
-        int res = 0;
-        for(unsigned i = 0; i < s.size(); ++i){
-            if(combinations[i].second > combinations[i + 1].second && i + 1 <= s.size()){
-                res += combinations[i].second;
-            } else {
-                res -= combinations[i].second;
-            }
-        }
-        return res;
-    }
+
+		int romanToInt(string s) {
+			map<string, int> combinations = {{"I", 1}, {"II", 2}, {"III", 3}, {"IV", 4}, {"V", 5},
+				{"VI", 6}, {"VII", 7}, {"VIII", 8}, {"IX", 9}, {"X", 10},
+				{"L", 50}, {"D", 100}, {"M", 1000}
+			};
+			int res = 0;
+			for(const auto& i : s) {
+				cout << combinations[i] << '\n';
+			}
+			return res;
+		}
 };
 
-int main()
-{
-    Solution sl;
-    cout << sl.romanToInt("MCMXCIV");
+int main() {
+	Solution sl;
+	cout << sl.romanToInt("MCMXCIV");
 
-    return 0;
+	return 0;
 }
