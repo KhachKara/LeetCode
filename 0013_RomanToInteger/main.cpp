@@ -49,29 +49,53 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999]
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_map>
+#include <iterator>
 using namespace std;
 
 class Solution {
-public:
-    vector<pair<string, int>> combinations = {{"I", 1}, {"II", 2}, {"III", 3}, {"IV", 4}, {"V", 5},
-                                                     {"VI", 6}, {"VII", 7}, {"VIII", 8}, {"IX", 9}, {"X", 10},
-                                                     {"L", 50}, {"D", 100}, {"M", 1000}};
-
-//    vector<pair<int, string>> combinations = {{1, "I"}, {2, "II"}, {3, "III"}, {4, "IV"}, {5, "V"},
-//                                              {6, "VI"}, {7, "VII"}, {8, "VIII"}, {9, "IX"}, {10, "X"},
-//                                              {50, "L"}, {100, "D"}, {1000, "M"}};
-    int romanToInt(string s) {
-        int res = 0;
-        for(unsigned i = 0; i < s.size(); ++i){
-            if(combinations[i].second > combinations[i + 1].second && i + 1 <= s.size()){
-                res += combinations[i].second;
-            } else {
-                res -= combinations[i].second;
-            }
+    public:
+        int romanToInt(string s) {
+            unordered_map<char, int> T = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100},
+                {'D', 500}, {'M', 1000}
+            };
+            int num=T[s.back()];
+            for(unsigned i=0; i<s.length()-1; i++)
+                num += T[s[i]] < T[s[i+1]] ? -T[s[i]] : T[s[i]];
+            return num;
         }
-        return res;
-    }
 };
+
+//class Solution {
+//public:
+//    map<string, int> combinations = {{"I", 1}, {"II", 2}, {"III", 3}, {"IV", 4}, {"V", 5},
+//                                     {"VI", 6}, {"VII", 7}, {"VIII", 8}, {"IX", 9}, {"X", 10},
+//                                     {"L", 50}, {"D", 100}, {"M", 1000}};
+
+//    int romanToInt(string s) {
+//        int res = 0;
+//        map<string, int>::iterator it = combinations.begin();
+
+//        string key;
+//        auto item = combinations.find(key);
+
+//        key = s[2];
+//        cout << item->first << '\n';
+
+////        for (const auto& i : s){
+////            key = i;
+////            for(auto j = combinations.begin(); j != combinations.end(); ++j){
+////                if (j != combinations.end()) {
+////                    cout << j->first << "\n";
+////                } else {
+////                    cout << "Key does not exist!" << endl;
+////                }
+////            }
+////        }
+
+//        return res;
+//    }
+//};
 
 int main()
 {

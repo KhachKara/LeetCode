@@ -54,24 +54,20 @@ using namespace std;
 
 class Solution {
 	public:
-
-
 		int romanToInt(string s) {
-			map<string, int> combinations = {{"I", 1}, {"II", 2}, {"III", 3}, {"IV", 4}, {"V", 5},
-				{"VI", 6}, {"VII", 7}, {"VIII", 8}, {"IX", 9}, {"X", 10},
-				{"L", 50}, {"D", 100}, {"M", 1000}
+			unordered_map<char, int> T = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100},
+				{'D', 500}, {'M', 1000}
 			};
-			int res = 0;
-			for(const auto& i : s) {
-				cout << combinations[i] << '\n';
-			}
-			return res;
+			int num=T[s.back()];
+			for(int i=0; i<s.length()-1; i++)
+				num += T[s[i]] < T[s[i+1]] ? -T[s[i]] : T[s[i]];
+			return num;
 		}
 };
 
 int main() {
 	Solution sl;
-	cout << sl.romanToInt("MCMXCIV");
+	sl.romanToInt("MCMXCIV");
 
 	return 0;
 }

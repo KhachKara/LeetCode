@@ -1,0 +1,3 @@
+https://www.delftstack.com/ru/howto/cpp/map-find-in-cpp/
+
+https://leetcode.com/problems/roman-to-integer/discuss/2133411/Using-Table-or-CPP
