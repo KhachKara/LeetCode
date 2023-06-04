@@ -13,7 +13,6 @@ jobs:
     steps:
       - name: Sync
         uses: joshcai/leetcode-sync@v1.5
-        run: echo "Synchronize every 15 minutes"
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
