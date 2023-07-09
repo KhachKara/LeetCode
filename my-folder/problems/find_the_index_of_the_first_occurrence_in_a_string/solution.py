@@ -5,11 +5,11 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
-        if needle == "":
+        res_str = haystack.split(needle)
+
+        if res_str[0] == '':
             return 0
-        
-        for i in range(len(haystack) - len(needle) + 1):
-            if haystack[i:i+len(needle)] == needle:
-                return i
-        
-        return -1
+        elif res_str[0] == haystack:
+            return -1
+        else:    
+            return len(res_str[0])
