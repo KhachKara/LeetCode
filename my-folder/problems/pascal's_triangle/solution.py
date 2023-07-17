@@ -7,18 +7,11 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
-        if numRows <= 0:
-            return []
-        result = []
-        pre = []
-        pre.append(1)
-        result.append(pre)
-        for i in range(0, numRows-1):
-            curr = []
-            curr.append(1)
-            for j in range(0, len(pre)-1):
-                curr.append(pre[j]+pre[j+1])
-            curr.append(1)
-            result.append(curr)
-            pre = curr
-        return result
+        dp = [[1]]
+        for i in range(numRows - 1):
+            temp = [0] + dp[-1] + [0]
+            row = []
+            for j in range(len(dp[-1]) + 1):
+                row.append(temp[j] + temp[j + 1])
+            dp.append(row)
+        return dp
